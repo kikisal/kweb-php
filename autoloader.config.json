@@ -1,0 +1,12 @@
+{
+    "namespaces": [
+        {
+            "name":    "KCoreWeb",
+            "resolve": "core/classes" 
+        },
+        {
+            "name":    "KCoreApi",
+            "resolve": "core/api" 
+        }
+    ]
+}
