@@ -158,8 +158,15 @@ class SimpleTheme extends ATheme {
                     
                     ob_start();
 
-                    $returnValue = includeFile($file);
-
+                    $returnValue = null;
+                    
+                    try {
+                        includeFile($file);
+                    } catch(\Exception | \Error $ex) {
+                        echo "Exception caught: " . $ex->getMessage() . "<br>";
+                        return null;
+                    }
+                    
                     $content = ob_get_clean();
 
                     echo $content;

@@ -6,6 +6,8 @@ use KCoreWeb\Utils\Path;
 
 class Theme {
 
+    const CONTROLLER_PATH = "controller/route";
+
     static function runningTheme() {
         global $engine;
         $runningTheme = $engine["runningTheme"];
@@ -62,6 +64,7 @@ class Theme {
         if (!file_exists($file))
             throw new \Exception("Theme::importFile('$relativeFile') failed. File doen't exists.");
 
-        return includeFile(self::absolutePath() . Path::SLASH . $file);
+        
+        return includeFile($file);
     }
 }

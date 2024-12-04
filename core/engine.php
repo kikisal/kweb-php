@@ -32,13 +32,22 @@ function includeControl() {
 
     if (!file_exists($controllerPath))
         throw new \Exception($uri . " doesn't define a controller");
-
-    return includeFile($controllerPath);
+    
+    try {
+        return includeFile($controllerPath);
+    } catch(\Exception | \Error $ex) {
+        throw new \Exception("Error occurred in controller " . Theme::CONTROLLER_PATH . "/" . $uri . ": " . $ex->getMessage() . " [line " . $ex->getLine() . "]");
+    }
 }
 
 function setRunningTheme($theme) {
     global $engine;
     $engine["runningTheme"] = $theme;
+}
+
+function engineBootstrap($class): object | null {
+    echo "engineBootstrap() ";
+    return null;
 }
 
 return [
